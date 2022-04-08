@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Показать пользователя</title>
+    <style> div {
+        width: 250px;
+        padding: 10px 5px;
+        font-family: "Roboto Light",serif;
+        font-size: 16px;
+        border-style: solid;
+        border-width: 1px;
+        background: #c5e7e7;
+    }
+    button {
+        padding: 5px;
+        background-color: rgba(135, 178, 229, 0.78);
+    }
+    body {
+        background-color: rgba(210, 220, 222, 0.78);
+    }
+
+    </style>
+</head>
+<body>
+<h1>ПОЛЬЗОВАТЕЛЬ</h1>
+    <a th:href="@{/users/{id}/edit(id=${user.getId()})}">Добавить пользователя</a>
+    <br>
+    <div th:text="${'ID: ' + user.getId()}">id</div>
+    <div th:text="${user.getName() + ', ' + user.getPosition()}">Имя и позиция</div>
+    <div th:text="${'Email: ' + user.getEmail()}">Электронный адресс</div>
+    <br/>
+    <hr/>
+    <form th:method="DELETE" th:action="@{/users/{id}(id=${user.getId()})}">
+        <input type="submit" value="Удалить этого пользователя"/>
+    </form>
+    <br/>
+    <button onclick="window.location.href = '/users';">Вернуться к списку пользователей</button>
+</body>
+</html>
